@@ -19,9 +19,9 @@ import {
 import React, {  useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import {  useNavigate } from "react-router-dom";
-import { login } from "../../Redux/Auth/auth.action";
+import { signup } from "../../Redux/Auth/auth.action";
 
-function Login() {
+function SignUp() {
   const [loginCreds, setLoginCreds] = useState({});
   const dispatch = useDispatch();
   const toast = useToast()
@@ -38,13 +38,8 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(loginCreds));
-
-  };
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-    navigate("/signup")
+    dispatch(signup(loginCreds));
+    navigate("/login")
   };
 
   useEffect(()=>{
@@ -84,7 +79,7 @@ function Login() {
           >
             <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
               <Stack align={"center"}>
-                <Heading fontSize={"4xl"}>Sign in to your account</Heading>
+                <Heading fontSize={"4xl"}>Register your account</Heading>
                 <Text fontSize={"lg"} color={"gray.600"}>
                   to enjoy your shopping
                   <Link color={"blue.400"}> experience</Link> ✌️
@@ -97,12 +92,30 @@ function Login() {
                 p={8}
               >
                 <Stack spacing={4}>
+                  <FormControl id="name">
+                    <FormLabel>Name</FormLabel>
+                    <Input
+                      name="name"
+                      type="text"
+                      placeholder="Enter your name"
+                      onChange={hanldeChange}
+                    />
+                  </FormControl>
                   <FormControl id="email">
                     <FormLabel>Email address</FormLabel>
                     <Input
-                      name="usernameOrEmail"
+                      name="email"
                       type="text"
-                      placeholder="Enter Email or Username"
+                      placeholder="Enter Email"
+                      onChange={hanldeChange}
+                    />
+                  </FormControl>
+                  <FormControl id="username">
+                    <FormLabel>Enter username</FormLabel>
+                    <Input
+                      name="username"
+                      type="text"
+                      placeholder="Enter username"
                       onChange={hanldeChange}
                     />
                   </FormControl>
@@ -116,14 +129,7 @@ function Login() {
                     />
                   </FormControl>
                   <Stack spacing={10}>
-                    <Stack
-                      direction={{ base: "column", sm: "row" }}
-                      align={"start"}
-                      justify={"space-between"}
-                    >
-                      <Link color={"blue.400"} onClick={handleSignup}>Register new user</Link>
-                      <Link color={"blue.400"}>Forgot password?</Link>
-                    </Stack>
+                  
                     <Button
                       onClick={handleSubmit}
                       bg={"blue.400"}
@@ -132,7 +138,7 @@ function Login() {
                         bg: "blue.500",
                       }}
                     >
-                      Sign in
+                      Sign up
                     </Button>
                   </Stack>
                 </Stack>
@@ -146,4 +152,4 @@ function Login() {
 }
 
 
-export default Login;
+export default SignUp;

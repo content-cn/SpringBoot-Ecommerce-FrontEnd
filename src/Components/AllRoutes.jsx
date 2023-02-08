@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainCartPage from '../Pages/cartPage/MainCartPage';
 import Home from "../Pages/Home/Home";
 import Login from '../Pages/Login/Login';
+import SignUp from '../Pages/Login/Signup';
 import Products from '../Pages/Products/Products';
 import SingleProduct from '../Pages/SingleProduct/SingleProduct';
 import Checkout from '../Pages/checkout/checkout'
@@ -38,6 +39,7 @@ const AllRoutes = () => {
             <Route path="/accessories/:id" element={<SingleProduct typeOfProduct="accessories" />}></Route>
             <Route path="/cart" element={<MainCartPage/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
+            <Route path="/signup" element={<SignUp/>}></Route>
             <Route path="/profile" element={<ProfilePage/>}></Route>
             <Route path="/address" element={<AddressPage/>}></Route>
             <Route path="/order" element={<OrderPage/>}></Route>
