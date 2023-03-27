@@ -39,7 +39,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginCreds));
-
+    navigate("/")
   };
 
   const handleSignup = (e) => {

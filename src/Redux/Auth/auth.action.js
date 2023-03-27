@@ -16,7 +16,7 @@ const cookies = new Cookies();
 export const login = (creds) => async (dispatch) => {
   dispatch({ type: LOGIN_LOADING });
   try {
-    let res = await axios.post("http://localhost:8080/api/auth/signin", creds);
+    let res = await axios.post("http://localhost:8081/api/auth/signin", creds);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     console.log(res.data);
     cookies.set('userData', res.data);
@@ -29,7 +29,7 @@ export const login = (creds) => async (dispatch) => {
 export const signup = (userdata) => async (dispatch) => {
   dispatch({ type: SIGNUP_LOADING });
   try {
-    let res = await axios.post("http://localhost:8080/api/auth/signup", userdata);
+    let res = await axios.post("http://localhost:8081/api/auth/signup", userdata);
     dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
   } catch (e) {
     dispatch({ type: SIGNUP_ERROR, payload: e.message });
